@@ -4,9 +4,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser"; // Import cookie-parser
 import dotenv from "dotenv";
 import db from "./configs/Database.js";
-import ModelUser from './models/ModelUser.js'
-import ModelRoom from './models/ModelRoom.js'
-import ModelReservation from './models/ModelReservation.js'
 dotenv.config()
 
 // Router
@@ -29,6 +26,10 @@ app.use(express.json());
 
 // Use cookie-parser middleware
 app.use(cookieParser());
+
+app.get('/', (req, res) => {
+    return res.send({message: "Hallo World!"})
+})
 
 app.options('/logout', cors()); // Handle preflight for /auth/logout
 app.use('/auth', RouteAuth);
